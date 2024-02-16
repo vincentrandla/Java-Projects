@@ -4,13 +4,18 @@ public class Formula {
     private int weight;
     private int height;
     private int age;
+    private String exercise;
 
 
-    public Formula(int weight, int height, int age) {
+    public Formula(int weight, int height, int age, String exercise) {
     this.weight = weight;
     this.height = height;
     this.age = age;
+    this.exercise = exercise;
     }
+
+
+
 
     public int getWeight() {
     return weight;
@@ -24,10 +29,35 @@ public class Formula {
     return age;
     }
 
-    public double CalculateMaleDeficit(Formula formula) {
+    public String getExercise() {
+        return exercise;
+    }
+
+    public double CalculateMaleDeficit(Exercise exercise) {
         double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) + 5;
-        String excercise;
         double TDEE;
+        switch (exercise) {
+            case SEDENTARY -> {
+                TDEE = BMR * 1.2;
+                return TDEE;
+            }
+            case VERY_ACTIVE -> {
+                TDEE = BMR * 1.375;
+                return TDEE;
+            }
+            case LIGHTLY_ACTIVE -> {
+                TDEE = BMR * 1.55;
+                return TDEE;
+            }
+            case EXTREMELY_ACTIVE -> {
+                TDEE = BMR * 1.725;
+                return TDEE;
+            }
+            case MODERATELY_ACTIVE -> {
+                TDEE = BMR * 1.9;
+                return TDEE;
+            }
+        }
         return 0;
     }
 

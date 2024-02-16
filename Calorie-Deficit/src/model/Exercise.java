@@ -1,0 +1,5 @@
+package model;
+
+public enum Exercise {
+    SEDENTARY, LIGHTLY_ACTIVE, MODERATELY_ACTIVE, VERY_ACTIVE, EXTREMELY_ACTIVE
+}
