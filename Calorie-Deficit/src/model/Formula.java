@@ -1,23 +1,12 @@
 package model;
 
 public class Formula {
-    private int weight;
+    private double weight;
     private int height;
     private int age;
-    private String exercise;
 
 
-    public Formula(int weight, int height, int age, String exercise) {
-    this.weight = weight;
-    this.height = height;
-    this.age = age;
-    this.exercise = exercise;
-    }
-
-
-
-
-    public int getWeight() {
+    public double getWeight() {
     return weight;
     }
 
@@ -29,44 +18,39 @@ public class Formula {
     return age;
     }
 
-    public String getExercise() {
-        return exercise;
-    }
-
     public double CalculateMaleDeficit(Exercise exercise) {
         double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) + 5;
-        double TDEE;
-        switch (exercise) {
-            case SEDENTARY -> {
-                TDEE = BMR * 1.2;
-                return TDEE;
-            }
-            case VERY_ACTIVE -> {
-                TDEE = BMR * 1.375;
-                return TDEE;
-            }
-            case LIGHTLY_ACTIVE -> {
-                TDEE = BMR * 1.55;
-                return TDEE;
-            }
-            case EXTREMELY_ACTIVE -> {
-                TDEE = BMR * 1.725;
-                return TDEE;
-            }
-            case MODERATELY_ACTIVE -> {
-                TDEE = BMR * 1.9;
-                return TDEE;
-            }
-        }
-        return 0;
+        return CalculateDeficit(exercise, BMR);
     }
 
-    public double CalculateFemaleDeficit(Formula formula) {
+    public double CalculateFemaleDeficit(Exercise exercise) {
         double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) - 161;
-        String excercise;
-        double TDEE;
-        return 0;
+        return CalculateDeficit(exercise, BMR);
     }
+
+    private double CalculateDeficit(Exercise exercise, double BMR) {
+        double TDEE = 0;
+        switch (exercise) {
+            case SEDENTARY -> {
+                TDEE = BMR * 1.2 - 1000;
+            }
+            case VERY_ACTIVE -> {
+                TDEE = BMR * 1.375 - 1000;
+            }
+            case LIGHTLY_ACTIVE -> {
+                TDEE = BMR * 1.55 - 1000;
+            }
+            case EXTREMELY_ACTIVE -> {
+                TDEE = BMR * 1.725 - 1000;
+            }
+            case MODERATELY_ACTIVE -> {
+                TDEE = BMR * 1.9 - 1000;
+            }
+        }
+        return TDEE;
+    }
+
+
 
 // 1
 // BMR
