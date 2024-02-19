@@ -1,52 +1,55 @@
 package model;
 
 public class Formula {
-    private double weight;
-    private int height;
-    private int age;
-
+    private double weight = 92;
+    private int height = 170;
+    private int age = 28;
 
     public double getWeight() {
-    return weight;
+        return weight;
     }
 
-    public int getHeight() {
-    return height;
+    public double getHeight() {
+        return height;
     }
 
-    public int getAge() {
-    return age;
+    public double getAge() {
+        return age;
     }
+
 
     public double CalculateMaleDeficit(Exercise exercise) {
         double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) + 5;
+        System.out.println("BMR on " + BMR);
         return CalculateDeficit(exercise, BMR);
     }
 
     public double CalculateFemaleDeficit(Exercise exercise) {
-        double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) - 161;
+        double BMR = (9.99 * weight) + (6.25 * height) - (4.92 * age) - 161;
         return CalculateDeficit(exercise, BMR);
     }
 
     private double CalculateDeficit(Exercise exercise, double BMR) {
+        int deficitGoal = 500;
         double TDEE = 0;
         switch (exercise) {
             case SEDENTARY -> {
-                TDEE = BMR * 1.2 - 1000;
+                TDEE = BMR * 1.2 - deficitGoal;
             }
             case VERY_ACTIVE -> {
-                TDEE = BMR * 1.375 - 1000;
+                TDEE = BMR * 1.375 - deficitGoal;
             }
             case LIGHTLY_ACTIVE -> {
-                TDEE = BMR * 1.55 - 1000;
+                TDEE = BMR * 1.55 - deficitGoal;
             }
             case EXTREMELY_ACTIVE -> {
-                TDEE = BMR * 1.725 - 1000;
+                TDEE = BMR * 1.725 - deficitGoal;
             }
             case MODERATELY_ACTIVE -> {
-                TDEE = BMR * 1.9 - 1000;
+                TDEE = BMR * 1.9 - deficitGoal;
             }
         }
+        System.out.println("TDEE on " + TDEE);
         return TDEE;
     }
 
