@@ -1,26 +1,18 @@
 package model;
 
 public class Formula {
-    private double weight = 92;
-    private int height = 170;
-    private int age = 28;
+    private double weight;
+    private int height;
+    private int age;
 
-    public double getWeight() {
-        return weight;
+    public Formula(double weight, int height, int age) {
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
     }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public double getAge() {
-        return age;
-    }
-
 
     public double CalculateMaleDeficit(Exercise exercise) {
-        double BMR = (9.99 * getWeight()) + (6.25 * getHeight()) - (4.92 * getAge()) + 5;
-        System.out.println("BMR on " + BMR);
+        double BMR = (9.99 * weight) + (6.25 * height) - (4.92 * age) + 5;
         return CalculateDeficit(exercise, BMR);
     }
 
@@ -49,7 +41,6 @@ public class Formula {
                 TDEE = BMR * 1.9 - deficitGoal;
             }
         }
-        System.out.println("TDEE on " + TDEE);
         return TDEE;
     }
 

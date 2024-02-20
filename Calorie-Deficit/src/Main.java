@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Formula formula = new Formula();
         Scanner scanner = new Scanner(System.in);
         int selection;
 
@@ -19,6 +18,7 @@ public class Main {
         int height = scanner.nextInt();
         System.out.println("Enter your age: ");
         int age = scanner.nextInt();
+        Formula formula = new Formula(weight, height, age);
 
         System.out.println("Please choose your activity level by typing the corresponding number");
         System.out.println("1) Sedentary");
@@ -31,38 +31,47 @@ public class Main {
         switch (selection) {
             case 1 -> {
                 if (Objects.equals(gender, "male")) {
-                    System.out.println(formula.CalculateMaleDeficit(Exercise.SEDENTARY));
-                    formula.CalculateMaleDeficit(Exercise.SEDENTARY);
+                    result = formula.CalculateMaleDeficit(Exercise.SEDENTARY);
+                    System.out.println("You should eat less than " + result + " calories");
                 } else {
-                    formula.CalculateFemaleDeficit(Exercise.SEDENTARY);
+                    result = formula.CalculateFemaleDeficit(Exercise.SEDENTARY);
+                    System.out.println("You should eat less than " + result + " calories");
                 }
             }
             case 2 -> {
                 if (Objects.equals(gender, "male")) {
-                    formula.CalculateMaleDeficit(Exercise.VERY_ACTIVE);
+                    result = formula.CalculateMaleDeficit(Exercise.VERY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 } else {
-                    formula.CalculateFemaleDeficit(Exercise.VERY_ACTIVE);
+                    result = formula.CalculateFemaleDeficit(Exercise.VERY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 }
             }
             case 3 -> {
                 if (Objects.equals(gender, "male")) {
-                    formula.CalculateMaleDeficit(Exercise.LIGHTLY_ACTIVE);
+                    result = formula.CalculateMaleDeficit(Exercise.LIGHTLY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 } else {
-                    formula.CalculateFemaleDeficit(Exercise.LIGHTLY_ACTIVE);
+                    result = formula.CalculateFemaleDeficit(Exercise.LIGHTLY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 }
             }
             case 4 -> {
                 if (Objects.equals(gender, "male")) {
-                    formula.CalculateMaleDeficit(Exercise.EXTREMELY_ACTIVE);
+                    result = formula.CalculateMaleDeficit(Exercise.EXTREMELY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 } else {
-                    formula.CalculateFemaleDeficit(Exercise.EXTREMELY_ACTIVE);
+                    result = formula.CalculateFemaleDeficit(Exercise.EXTREMELY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 }
             }
             case 5 -> {
                 if (Objects.equals(gender, "male")) {
-                    formula.CalculateMaleDeficit(Exercise.MODERATELY_ACTIVE);
+                    result = formula.CalculateMaleDeficit(Exercise.MODERATELY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 } else {
-                    formula.CalculateFemaleDeficit(Exercise.MODERATELY_ACTIVE);
+                    result = formula.CalculateFemaleDeficit(Exercise.MODERATELY_ACTIVE);
+                    System.out.println("You should eat less than " + result + " calories");
                 }
             }
         }
